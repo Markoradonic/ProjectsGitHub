@@ -4,9 +4,9 @@ function addPersonToLIst() {
     ui.addPersonToLIst;
 }
 
-function deletePerson(el) {
-    ui.deletePerson(el);
-}
+// function deletePerson(id) {
+//     ui.deletePerson(id);
+// }
 
 function showAlert(message, className) {
     ui.showAlert(message, className);
@@ -15,6 +15,12 @@ function showAlert(message, className) {
 
 function clearFields() {
     ui.clearFields;
+}
+
+function uuidv4() {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
 }
 
 document.addEventListener('DOMContentLoaded', ui.displayPerson);
@@ -26,20 +32,20 @@ document.querySelector('#person-form').addEventListener('submit', (e) => {
     let name = document.querySelector('#name').value;
     let lastName = document.querySelector('#lastName').value;
     let jmbg = document.querySelector('#jmbg').value;
+    let id = uuidv4();
 
 
     if (name === '' || lastName === '' || jmbg === '') {
         ui.showAlert('Please fill in all fields', 'danger');
     } else {
-        const person = new Person(name, lastName, jmbg);
+        const person = new Person(name, lastName, jmbg, id);
         ui.addPersonToLIst(person);
         ui.showAlert('Person Added', 'success');
         ui.clearFields();
     }
-
 })
 
-document.querySelector('#person-list').addEventListener('click', (e) => {
-    ui.deletePerson(e.target);
-    ui.showAlert('Person Removed', 'success');
-});
+///document.querySelector('.person-list').addEventListener('click', (e) => {
+//    ui.deletePerson(e.target);
+//    ui.showAlert('Person Removed', 'success');
+//});
