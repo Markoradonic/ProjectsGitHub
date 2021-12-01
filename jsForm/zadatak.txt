@@ -1,0 +1,5 @@
+Sve pozive koje imas u aplikaciji moras da izdvojis u poseban fajl koji ce se nazvati PersonsApiService.js
+
+ovaj fajl ce u sebi imati implementaciju PersonsApiService klase a ta klasa ce imati metode(funkcije) za kompletnu komunikaciju sa Apijem
+
+Svaka funkcija ce primati neke odredjene parametre i vratice rezultat izvrsenja apija koji on daje u responsu. 
